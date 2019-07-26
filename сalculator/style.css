@@ -1,0 +1,52 @@
+.wrapper {
+	width: 300px;
+	height: 500px;
+	padding: 20px 10px;
+	background: rgba(0,0,0, .7);
+	border-radius: 10px;
+}
+
+.scoreboard {
+	width: 96%;
+	height: 10%;
+	margin: 0 auto; 
+	background: #000;
+	color: #48FF00;
+	display: flex;
+	align-items: center;
+	font-size: 50px;
+	font-weight: 900;
+	padding-left: 10px;
+}
+
+.panel {
+	display: flex;
+	height: 85%;
+	flex-wrap: wrap;
+	margin-top: 10px;
+	justify-content: space-around;
+	align-items: flex-end;
+}
+
+.button-num {
+	width: 30%;
+	height: 70px;
+	border: none;
+	transition: color .2s linear;
+	transition: background .2s linear;
+	outline: none;
+	font-size: 20px;
+	font-weight: 900;
+	background: #aaa;
+	border-radius: 10px;
+}
+
+.button-num:hover {
+	background: #000;
+	color: #fff;
+}
+
+.button-num:active {
+	background: #fff;
+	color: #000;
+}
