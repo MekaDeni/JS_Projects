@@ -8,7 +8,7 @@
 
 .scoreboard {
 	width: 96%;
-	height: 10%;
+	height: 15%;
 	margin: 0 auto; 
 	background: #000;
 	color: #48FF00;
@@ -17,6 +17,8 @@
 	font-size: 50px;
 	font-weight: 900;
 	padding-left: 10px;
+	overflow-x: scroll;
+	overflow-y: hidden;
 }
 
 .panel {
