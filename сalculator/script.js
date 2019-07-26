@@ -1,12 +1,15 @@
 'use-strict';
 
 function startApp() {
-	// body...
-	console.log('HELLO WORLD!!!');
+	var buttonNum = document.getElementsByClassName('button-num');
+
+	for(var i = 0; i < buttonNum.length; i++) {
+		buttonNum[i].addEventListener('click', clickButtonNum);
+	}
 }
 
-function clickButtonNum() {
-	// body...
+function clickButtonNum(e) {
+	console.log('Нажали на =', e.target.innerHTML);
 }
 
 function clickButtonCommand() {

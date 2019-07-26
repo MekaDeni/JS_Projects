@@ -28,7 +28,7 @@
 	align-items: flex-end;
 }
 
-.button-num {
+.panel__button {
 	width: 30%;
 	height: 70px;
 	border: none;
@@ -41,12 +41,12 @@
 	border-radius: 10px;
 }
 
-.button-num:hover {
+.panel__button:hover {
 	background: #000;
 	color: #fff;
 }
 
-.button-num:active {
+.panel__button:active {
 	background: #fff;
 	color: #000;
 }
