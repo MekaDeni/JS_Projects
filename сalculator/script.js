@@ -3,7 +3,9 @@
 function startApp() {
 	var buttonNum = document.getElementsByClassName('button-num'),
 		buttonCom = document.getElementsByClassName('button-com'),
-		inputResult = document.getElementById('inputResult');
+		inputResult = document.getElementById('inputResult'),
+		arrNum = [],
+		result = 0;
 
 	for(var i = 0; i < buttonNum.length; i++) {
 		buttonNum[i].addEventListener('click', clickButtonNum);
@@ -14,14 +16,31 @@ function startApp() {
 	}
 
 	function clickButtonNum(e) {
+		// конкатенируем значения из поля со значением из нажатой кнопки
+		// и кладем в поле
 		inputResult.innerHTML = +(inputResult.innerHTML + e.target.innerHTML);
-		console.log('Нажали на =', e.target.innerHTML);
 	}
 
 
 	function clickButtonCommand(e) {
-		console.log('В поле сейчас =', inputResult.innerHTML);
+		// парсем число и кладем в массив
+		arrNum.push(parseInt(inputResult.innerHTML));
+		// обнуляем табло
 		inputResult.innerHTML = 0;
+
+		// если в массиве 2 числа
+		// вычетаем 2-ое и 1-ого
+		// резалт пишем в табло
+		// после обнуляем резалт
+		if(arrNum.length > 1) {
+			result += arrNum[0] - arrNum[1];
+			arrNum = [];
+			inputResult.innerHTML = result;
+			result = 0;
+			
+			console.log('В поле было число =', inputResult.innerHTML, arrNum, result);
+		}
+
 	}
 }
 
