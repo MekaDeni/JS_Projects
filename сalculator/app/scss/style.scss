@@ -4,6 +4,34 @@
 	padding: 20px 10px;
 	background: rgba(0,0,0, .7);
 	border-radius: 10px;
+	box-shadow: 5px 5px 10px rgba(0,0,0, .7);
+}
+
+.head {
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	max-width: 300px;
+}
+
+.onButton {
+	height: 50px;
+	width: 100px;
+	background: red;
+	border: none;
+	font-weight: 900;
+
+	&::after {
+		content: 'ВЫКЛ';
+	}
+}
+
+.--onButton__active {
+	background: #43FF3A;
+
+	&::after {
+		content: 'ВКЛ';
+	}
 }
 
 .scoreboard {
@@ -17,7 +45,7 @@
 	font-size: 50px;
 	font-weight: 900;
 	padding-left: 10px;
-	overflow-x: scroll;
+	overflow-x: auto;
 	overflow-y: hidden;
 }
 

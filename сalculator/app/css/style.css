@@ -1,0 +1,70 @@
+@charset "UTF-8";
+.wrapper {
+  width: 300px;
+  height: 500px;
+  padding: 20px 10px;
+  background: rgba(0, 0, 0, 0.7);
+  border-radius: 10px;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.7); }
+
+.head {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  max-width: 300px; }
+
+.onButton {
+  height: 50px;
+  width: 100px;
+  background: red;
+  border: none;
+  font-weight: 900; }
+  .onButton::after {
+    content: 'ВЫКЛ'; }
+
+.--onButton__active {
+  background: #43FF3A; }
+  .--onButton__active::after {
+    content: 'ВКЛ'; }
+
+.scoreboard {
+  width: 96%;
+  height: 15%;
+  margin: 0 auto;
+  background: #000;
+  color: #48FF00;
+  display: flex;
+  align-items: center;
+  font-size: 50px;
+  font-weight: 900;
+  padding-left: 10px;
+  overflow-x: auto;
+  overflow-y: hidden; }
+
+.panel {
+  display: flex;
+  height: 85%;
+  flex-wrap: wrap;
+  margin-top: 10px;
+  justify-content: space-around;
+  align-items: flex-end; }
+
+.panel__button {
+  width: 30%;
+  height: 70px;
+  border: none;
+  transition: color .2s linear;
+  transition: background .2s linear;
+  outline: none;
+  font-size: 20px;
+  font-weight: 900;
+  background: #aaa;
+  border-radius: 10px; }
+
+.panel__button:hover {
+  background: #000;
+  color: #fff; }
+
+.panel__button:active {
+  background: #fff;
+  color: #000; }
