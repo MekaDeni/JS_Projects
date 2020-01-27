@@ -17,17 +17,30 @@
 .onButton {
 	height: 50px;
 	width: 100px;
-	background: red;
 	border: none;
 	font-weight: 900;
+	cursor: pointer;
+	box-shadow: 0 0 10px rgba(0,0,0, .5);
+	transition: all .2s linear ;
+
+	&:hover {
+		box-shadow: none;
+		color: #fff;
+	}
+}
+
+.--onButton__off {
+	background: red;
 
 	&::after {
 		content: 'ВЫКЛ';
 	}
 }
 
-.--onButton__active {
+.--onButton__on {
 	background: #43FF3A;
+	box-shadow: none;
+	color: #fff;
 
 	&::after {
 		content: 'ВКЛ';

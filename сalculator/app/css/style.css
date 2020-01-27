@@ -16,15 +16,25 @@
 .onButton {
   height: 50px;
   width: 100px;
-  background: red;
   border: none;
-  font-weight: 900; }
-  .onButton::after {
+  font-weight: 900;
+  cursor: pointer;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  transition: all .2s linear; }
+  .onButton:hover {
+    box-shadow: none;
+    color: #fff; }
+
+.--onButton__off {
+  background: red; }
+  .--onButton__off::after {
     content: 'ВЫКЛ'; }
 
-.--onButton__active {
-  background: #43FF3A; }
-  .--onButton__active::after {
+.--onButton__on {
+  background: #43FF3A;
+  box-shadow: none;
+  color: #fff; }
+  .--onButton__on::after {
     content: 'ВКЛ'; }
 
 .scoreboard {
