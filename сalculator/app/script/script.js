@@ -4,6 +4,7 @@ var calculator = document.getElementById('calculator'),
 	buttonNum = document.getElementsByClassName('button-num'),
 	sumButton = document.getElementById('sum'),
 	resultSum = 0;
+	numOnTable = '';
 
 /*
 	КНОПКА ВКЛ/ВЫКЛ
@@ -28,8 +29,8 @@ function clickNum(event) {
 	if (onButton.classList.contains('--onButton__off')) {
 		alert("Включите калькулятор");
 	} else {
-		// inputResult.innerHTML = '';
-		inputResult.innerHTML += event.target.innerHTML;
+		inputResult.innerHTML = '';
+		inputResult.innerHTML += numOnTable + event.target.innerHTML;
 	}
 }
 
