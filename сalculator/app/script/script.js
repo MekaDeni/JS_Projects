@@ -3,8 +3,20 @@ var calculator = document.getElementById('calculator'),
 	inputResult = document.getElementById('inputResult'),
 	buttonNum = document.getElementsByClassName('button-num'),
 	sumButton = document.getElementById('sum'),
-	resultSum = 0;
-	numOnTable = '';
+	resultSum = 0,
+	numOnTable = '',
+	firtsClickValue = 0;
+
+/*
+	Проверка на первый ввод
+*/
+
+function firstClick (value) {
+	if (value === 0) 
+		return false;
+	else 
+		return true;
+}
 
 /*
 	КНОПКА ВКЛ/ВЫКЛ
@@ -17,6 +29,7 @@ onButton.addEventListener('click', function () {
 	} else {
 		onButton.classList.remove('--onButton__on');
 		onButton.classList.add('--onButton__off');
+		firtsClickValue = 0;
 		inputResult.innerHTML = "";
 	}
 });
@@ -29,8 +42,13 @@ function clickNum(event) {
 	if (onButton.classList.contains('--onButton__off')) {
 		alert("Включите калькулятор");
 	} else {
-		inputResult.innerHTML = '';
+		if (firtsClickValue === 0) {
+			inputResult.innerHTML = '';
+			firtsClickValue += 1
+		}
+
 		inputResult.innerHTML += numOnTable + event.target.innerHTML;
+		console.log(inputResult.innerHTML);
 	}
 }
 
