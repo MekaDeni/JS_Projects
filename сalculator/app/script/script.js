@@ -3,6 +3,9 @@ var calculator = document.getElementById('calculator'),
 	inputResult = document.getElementById('inputResult'),
 	buttonNum = document.getElementsByClassName('button-num'),
 	sumButton = document.getElementById('sum'),
+	resButton = document.getElementById('res'),
+	compButton = document.getElementById('comp'),
+	quotButton = document.getElementById('quot'),
 	resultSum = 0,
 	numOnTable = '',
 	firtsClickValue = 0;
@@ -48,7 +51,6 @@ function clickNum(event) {
 		}
 
 		inputResult.innerHTML += numOnTable + event.target.innerHTML;
-		console.log(inputResult.innerHTML);
 	}
 }
 
@@ -60,9 +62,21 @@ for (var i=0; i<buttonNum.length; i++) {
 	СУММА 
 */
 
-sumButton.addEventListener('click', function () {
-	resultSum += parseInt(inputResult.innerHTML);
-	inputResult.innerHTML = '';
-	inputResult.innerHTML = resultSum;
+// функция вычисления 
+function calculation(e) {
+	if (e.target === sumButton) {
+		resultSum += parseInt(inputResult.innerHTML);
+	} else if (sign === 'res') {
+		resultSum -= parseInt(inputResult.innerHTML);
+	} else if (sign === 'comp') {
+		resultSum *= parseInt(inputResult.innerHTML);
+	} else if (sign === 'quot') {
+		resultSum *= parseInt(inputResult.innerHTML);
+	} else {
+		inputResult.innerHTML = resultSum;
+	}
 	console.log(resultSum);
-});
+	inputResult.innerHTML = '';
+}
+
+sumButton.addEventListener('click', calculation);
