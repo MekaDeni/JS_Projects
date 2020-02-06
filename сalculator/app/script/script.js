@@ -6,9 +6,12 @@ var calculator = document.getElementById('calculator'),
 	resButton = document.getElementById('res'),
 	compButton = document.getElementById('comp'),
 	quotButton = document.getElementById('quot'),
+	resultButton = document.getElementById('result'),
 	resultSum = 0,
+	sign = '',
 	numOnTable = '',
-	firtsClickValue = 0;
+	firtsClickNumValue = 0;
+	firtsClickResValue = 0;
 
 /*
 	Проверка на первый ввод
@@ -32,8 +35,10 @@ onButton.addEventListener('click', function () {
 	} else {
 		onButton.classList.remove('--onButton__on');
 		onButton.classList.add('--onButton__off');
-		firtsClickValue = 0;
+		firtsClickNumValue = 0;
 		inputResult.innerHTML = "";
+		resultSum = 0;
+		console.clear();
 	}
 });
 
@@ -45,9 +50,9 @@ function clickNum(event) {
 	if (onButton.classList.contains('--onButton__off')) {
 		alert("Включите калькулятор");
 	} else {
-		if (firtsClickValue === 0) {
+		if (firtsClickNumValue === 0) {
 			inputResult.innerHTML = '';
-			firtsClickValue += 1
+			firtsClickNumValue++;
 		}
 
 		inputResult.innerHTML += numOnTable + event.target.innerHTML;
@@ -64,19 +69,51 @@ for (var i=0; i<buttonNum.length; i++) {
 
 // функция вычисления 
 function calculation(e) {
+	if (firtsClickResValue === 0) {
+		firtsClickResValue++;
+		resultSum = parseInt(inputResult.innerHTML);
+		inputResult.innerHTML = '';
+
+		// присваиваем текущий знак
+		if (e.target === sumButton) sign = 'sum';
+		if (e.target === compButton) sign = 'comp';
+		if (e.target === quotButton) sign = 'quot';
+		if (e.target === resButton) sign = 'res';
+
+		console.log(resultSum);
+		return;
+	}
+
+	if (inputResult.innerHTML === '') return;
+
 	if (e.target === sumButton) {
 		resultSum += parseInt(inputResult.innerHTML);
-	} else if (sign === 'res') {
+		// присваиваем текущий знак
+		sign = 'sum';
+		console.log(sign);
+	} else if (e.target === resButton) {
 		resultSum -= parseInt(inputResult.innerHTML);
-	} else if (sign === 'comp') {
+	} else if (e.target === compButton) {
 		resultSum *= parseInt(inputResult.innerHTML);
-	} else if (sign === 'quot') {
-		resultSum *= parseInt(inputResult.innerHTML);
-	} else {
-		inputResult.innerHTML = resultSum;
+	} else if (e.target === quotButton) {
+		resultSum /= parseInt(inputResult.innerHTML);
 	}
+
 	console.log(resultSum);
 	inputResult.innerHTML = '';
 }
 
+resultButton.addEventListener('click', function () {
+	var inp = inputResult.innerHTML,
+		r = resultSum;
+
+	if (inp === '') inp = 0; 
+	if (sign === 'sum') {
+		inputResult.innerHTML = r + inp;
+	}
+});
+
 sumButton.addEventListener('click', calculation);
+resButton.addEventListener('click', calculation);
+compButton.addEventListener('click', calculation);
+quotButton.addEventListener('click', calculation);
