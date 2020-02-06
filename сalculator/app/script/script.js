@@ -10,8 +10,10 @@ var calculator = document.getElementById('calculator'),
 	resultSum = 0,
 	sign = '',
 	numOnTable = '',
+	clickOnRes = false,
+	firtsClickResValue = 0,
 	firtsClickNumValue = 0;
-	firtsClickResValue = 0;
+
 
 /*
 	Проверка на первый ввод
@@ -69,6 +71,8 @@ for (var i=0; i<buttonNum.length; i++) {
 
 // функция вычисления 
 function calculation(e) {
+	// если был вывод результат то отменяем
+	if(clickOnRes) clickOnRes = false; 
 	if (firtsClickResValue === 0) {
 		firtsClickResValue++;
 		resultSum = parseInt(inputResult.innerHTML);
@@ -90,12 +94,14 @@ function calculation(e) {
 		resultSum += parseInt(inputResult.innerHTML);
 		// присваиваем текущий знак
 		sign = 'sum';
-		console.log(sign);
 	} else if (e.target === resButton) {
+		sign = 'res';
 		resultSum -= parseInt(inputResult.innerHTML);
 	} else if (e.target === compButton) {
+		sign = 'comp';
 		resultSum *= parseInt(inputResult.innerHTML);
 	} else if (e.target === quotButton) {
+		sign = 'quot';
 		resultSum /= parseInt(inputResult.innerHTML);
 	}
 
@@ -104,13 +110,27 @@ function calculation(e) {
 }
 
 resultButton.addEventListener('click', function () {
-	var inp = inputResult.innerHTML,
+	var inp = parseInt(inputResult.innerHTML),
 		r = resultSum;
 
-	if (inp === '') inp = 0; 
+	// если выводили то выходим
+	if (clickOnRes) return;
+	if (inp === '') inp = 0;
 	if (sign === 'sum') {
 		inputResult.innerHTML = r + inp;
 	}
+	if (sign === 'res') {
+		inputResult.innerHTML = r - inp;
+	}
+	if (sign === 'quot') {
+		inputResult.innerHTML = r / inp;
+	}
+	if (sign === 'comp') {
+		inputResult.innerHTML = r * inp;
+	}
+
+	// если что то вывели то стави тру
+	if (inputResult.innerHTML !== '') clickOnRes = true;
 });
 
 sumButton.addEventListener('click', calculation);
